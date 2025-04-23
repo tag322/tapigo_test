@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18 as build-stage
 
 WORKDIR /app
 
@@ -11,5 +11,12 @@ RUN npm run build
 
 
 
+FROM nginx:stable-alpine
+
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+COPY ../docker/front/nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 8080
-CMD ["npm", "run", "serve"]
+
+CMD ["nginx", "-g", "daemon off;"]
