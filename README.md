@@ -1,7 +1,7 @@
 ## Установка
 
 1. В папках `/frontend` и `/backend` запустите `npm install`
-2. В `/frontend` запустите `npm run build`
+2. В `/frontend` запустите `npm install` и `npm run build`
 
 ### Запуск через докер
 
